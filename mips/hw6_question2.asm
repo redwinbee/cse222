@@ -1,10 +1,10 @@
 	.data
-arr:	.space	80	# reserve 80 bytes of space for the array
-siz:	.word	20	# the size of the array
-itr:	.word	20	# the number of times to perform the shuffling on the array
-tmp:	.word	20	# temporary variable to store value during swapping
-i1:	.word	20	# first random index
-i2:	.word	20	# second random index
+arr:	.space	160	# reserve 80 bytes of space for the array
+siz:	.word	40	# the size of the array
+itr:	.word	100	# the number of times to perform the shuffling on the array
+tmp:	.word	0	# temporary variable to store value during swapping
+i1:	.word	0	# first random index
+i2:	.word	0	# second random index
 	.text
 main:
 	li $t0, 1	# init the counter for the array
