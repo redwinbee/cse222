@@ -48,10 +48,8 @@ main:
 	la $a0, msg3
 	syscall
 	
-	
 	# exit the program
 	
-exit:
 	li $v0, 10
 	syscall
 ############################################################################################
@@ -111,18 +109,6 @@ count_even_odds:
 		lw $ra, 0($sp)		# restore the return address
 		addi $sp, $sp, 4	# restore the space we reserved earlier
 		jr $ra
-############################################################################################
-# HELPER FUNCTION to determine if a number is even or odd; said number is assumed to be in $a0
-# and the result is sent back in $s2. If the number is even return 1, otherwise 0.
-is_even:
-	srl $t9, $a0, 1	# shift the number to the right (logically) by 1
-	sll $t9, $t9, 1	# shift the number to the left (logically) by 1
-	beq $a0, $t9, yes		# branch to yes since the two numbers are still the same
-	li $s2, 0	# set the return result to false (0)
-	jr $ra		# exit the function
-	yes:
-		li $s2, 1	# set the return result to true (1)
-		jr $ra		# exit the function
 ############################################################################################
 # this function will be called with the assumption that the base address is stored in $a0,
 # and that the size of the array is stored in $a1.
