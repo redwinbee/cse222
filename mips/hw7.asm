@@ -85,45 +85,32 @@ gen_num:
 # how many even numbers it contains, every other number in the array is odd by default so count
 # and return that value in $s1
 count_even_odds:
-	# reserve space on the stack for our arguments
+	# reserve some space on the stack for our arguments and the return address
+	addi $sp, $sp, -4	# 3 (4 byte) values of space
+	sw $ra, 0($sp)		# save the return address to the array
 	
-	addi $sp, $sp, -12
-	sw $a0, 0($sp)	# preserve the base address of the array
-	sw $a1, 4($sp)	# preserve the length of the array
-	sw $ra, 8($sp)	# preserve the return address
-	
-	# count the number of times we encounter an even number and save it; then we can
-	# subtract the length of the array by the number of evens to extract the number of
-	# odds and save that too
-	
-	li $t0, 0	# init the index
-	li $t1, 0	# init the counter of even numbers
-	la $t2, 0($sp)	# init the base address	
+	# function implementation
+	li $s0, 0	# init the even count
+	li $s1, 0	# init the odd count
 	cloop:
-		lw $a0, ($t2)		# load the value from the array into $a0
-		jal is_even		# check if the number is even, return value in $s0
-		beq $s2, 1, even	# branch to 'even' if the number was even
-		addi $t2, $t2, 4	# update the base address to advance to the next number
-		addi $t0, $t0, 1 	# update the index
-		ble $t0, $a1, cloop	# continue the loop if necessary
-		j cexit			# exit the loop
-		even:
-			addi $t1, $t1, 1	# update the number of even numbers
-			addi $t2, $t2, 4	# update the base address to advance to the next number
-			addi $t0, $t0, 1	# update the index
-			ble $t0, $a1, cloop	# continue the loop if necessary
+		beq $a1, $zero, cexit	# exit the loop if we've gone through the entire array
+		lw $t0, 0($a0)	# load the current element from the array into $t0
+		andi $t1, $t0, 1	# check if the number is even or odd and save the result to $t1
+		beq $t1, $zero, even	# branch to even label if we got 0 as a result of AND'ing with 1
+		addi $s1, $s1, 1	# update the odd count since it's not even
+		addi $a0, $a0, 4	# update the base address
+		subi $a1, $a1, 1	# subtract the length of the array by 1
+		j cloop
+	even:
+		addi $s0, $s0, 1	# update the even count
+		addi $a0, $a0, 4	# update the base address
+		subi $a1, $a1, 1	# subtract the length of the array by 1
+		j cloop			# go back to the start of the loop
 	cexit:
-		move $s0, $t1		# move the even counter to the return register $s0
-		sub $s1, $a1, $s0	# calculate how many odd numbers there are and set it to $s1
-	
-	# de-allocate the space on the stack and retrieve the return address
-	
-	lw $ra, 8($sp)		# load the original return address back into $ra
-	addi $sp, $sp, 12	# recover the space we allocated earlier
-	
-	# exit the function
-	
-	jr $ra		
+		# de-allocate the space we saved earlier and exit the function
+		lw $ra, 0($sp)		# restore the return address
+		addi $sp, $sp, 4	# restore the space we reserved earlier
+		jr $ra
 ############################################################################################
 # HELPER FUNCTION to determine if a number is even or odd; said number is assumed to be in $a0
 # and the result is sent back in $s2. If the number is even return 1, otherwise 0.
