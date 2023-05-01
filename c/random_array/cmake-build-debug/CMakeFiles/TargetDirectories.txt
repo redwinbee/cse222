@@ -1,0 +1,3 @@
+/Users/redwinbee/Projects/cse222/c/random_array/cmake-build-debug/CMakeFiles/random_array.dir
+/Users/redwinbee/Projects/cse222/c/random_array/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/redwinbee/Projects/cse222/c/random_array/cmake-build-debug/CMakeFiles/rebuild_cache.dir
