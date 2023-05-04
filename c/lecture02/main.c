@@ -1,5 +1,6 @@
 #include <printf.h>
 #include "main.h"
+#include "arrays.h"
 
 // this is another version of the main method
 // argc = arg count
@@ -7,6 +8,7 @@
 // strings in C are defined as char arrays
 int main(int argc, char* argv[]) {
     demo_pointer();
+    start();
 
     // this is how we define a function pointer:
     // return_type (*func_ptr_name)(type_1, type_2, ..., type_n)
