@@ -29,8 +29,6 @@ void start() {
     printf("[arr]: the minimum number in the arr is %d\n", min);
 
     display(arr, size);
-    int* sorted = bubble_sort(arr, size);
-    display(sorted, size);
 }
 
 int* createArray(unsigned char size) {
