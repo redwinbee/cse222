@@ -40,7 +40,7 @@ int* createArray(unsigned char size) {
     return arr;
 }
 
-float calculate_avg(int* array, int size) {
+float calculate_avg(const int* array, int size) {
     int sum = 0;
     for (int i = 0; i < size; i++) {
         sum += array[i];
@@ -49,7 +49,7 @@ float calculate_avg(int* array, int size) {
     return (float) sum / (float) size;
 }
 
-int find_max(int* array, int size) {
+int find_max(const int* array, int size) {
     int max = -1;
     for (int i = 0; i < size; i++) {
         max = (array[i] > max) ? array[i] : max;
@@ -58,7 +58,7 @@ int find_max(int* array, int size) {
     return max;
 }
 
-int find_min(int* array, int size) {
+int find_min(const int* array, int size) {
     int min = UCHAR_MAX + 1;
     for (int i = 0; i < size; i++) {
         min = (array[i] < min) ? array[i] : min;

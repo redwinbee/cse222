@@ -6,9 +6,9 @@
 #define LECTURE02_ARRAYS_H
 
 int *createArray(unsigned char size);
-float calculate_avg(int* array, int size);
-int find_max(int* array, int size);
-int find_min(int* array, int size);
+float calculate_avg(const int* array, int size);
+int find_max(const int* array, int size);
+int find_min(const int* array, int size);
 void display(int* array, int size);
 void start();
 
