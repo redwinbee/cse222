@@ -1,0 +1,3 @@
+/Users/redwinbee/Projects/cse222/c/project02/cmake-build-debug/CMakeFiles/project02.dir
+/Users/redwinbee/Projects/cse222/c/project02/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/redwinbee/Projects/cse222/c/project02/cmake-build-debug/CMakeFiles/rebuild_cache.dir

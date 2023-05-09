@@ -1,0 +1,5 @@
+# ninja log v5
+1	136	1683227455268151131	CMakeFiles/lecture03.dir/main.c.o	a1efcfd6ad71fe49
+136	174	1683227455307690274	lecture03	23730a8835a21da2
+1	138	1683225766583357993	CMakeFiles/lecture03.dir/structs.c.o	bb6fb058235c1f96
+1	40	1683227345729637087	CMakeFiles/lecture03.dir/linkedlist.c.o	ce564b4185a5e258

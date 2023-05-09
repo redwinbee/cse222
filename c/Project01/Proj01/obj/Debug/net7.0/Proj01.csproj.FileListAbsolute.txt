@@ -1,5 +1,0 @@
-/Users/redwinbee/Projects/cse222/c/Project01/Proj01/obj/Debug/net7.0/Proj01.csproj.AssemblyReference.cache
-/Users/redwinbee/Projects/cse222/c/Project01/Proj01/obj/Debug/net7.0/Proj01.GeneratedMSBuildEditorConfig.editorconfig
-/Users/redwinbee/Projects/cse222/c/Project01/Proj01/obj/Debug/net7.0/Proj01.AssemblyInfoInputs.cache
-/Users/redwinbee/Projects/cse222/c/Project01/Proj01/obj/Debug/net7.0/Proj01.AssemblyInfo.cs
-/Users/redwinbee/Projects/cse222/c/Project01/Proj01/obj/Debug/net7.0/Proj01.csproj.CoreCompileInputs.cache
