@@ -59,6 +59,15 @@ int main() {
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
+    MyClass cls0;
+    MyClass cls1(10, 20);
+    MyClass cls3 = cls0 + cls1;
+
+
+    cls0++;
+
+    std::cout << cls1 << std::endl;
+
     return 0;
 }
 
