@@ -20,11 +20,17 @@ main:
 	lw $a1, input
 	jal print_result
 	
+	lw $a0, input
+	jal is_even_method_2
+	move $a0, $v0
+	lw $a1, input
+	jal print_result
+	
 	# exit the program
 	li $v0, 10
 	syscall
 ###############################################################
-# (method 1): check if a number is even by diving it by 2 and
+# (method 1): check if a number is even by dividing it by 2 and
 # checking if the remainder is 0.
 # assumes the following:
 # $a0 = the number to check
@@ -51,6 +57,37 @@ is_even_method_1:
 	exit_method_1:
 		lw $ra, 0($sp)
 		addi $sp, $sp, 4
+		jr $ra
+###############################################################
+# (method 2): use the LSB (least significant bit) to check if
+# the number is even or odd. an even number won't change if
+# shifted by 1 to the right and back again.
+# assumes the following:
+# $a0 = the number to check
+#
+# returns the following values stored in $v0:
+# 1 = the number is even
+# 0 = the number is odd
+is_even_method_2:
+	# housekeeping
+	addi $sp, $sp, -8
+	sw $ra, 0($sp)
+	sw $a0, 4($sp)
+	
+	# implementation
+	lw $t0, 4($sp)
+	srl $t0, $t0, 1
+	sll $t0, $t0, 1
+	beq $a0, $t0, even_method_2
+	li $v0, 0
+	j exit_method_2
+	even_method_2:
+		li $v0, 1
+		
+	# housekeeping
+	exit_method_2:
+		lw $ra, 0($sp)
+		addi $sp, $sp, 8
 		jr $ra
 ###############################################################
 # $a0 = result of even_odd check
